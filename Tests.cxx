@@ -46,11 +46,20 @@ int main(int argc, char* argv[])
 
   for(unsigned int i = 0; i < nodes.size(); i++)
     {
-    nodeImage->SetPixel(nodes[i].Location, 100);
+    nodeImage->SetPixel(nodes[i].ImageLocation, 100);
     }
 
   WriteImage(nodeImage, "Nodes.png");
 
+  KomodakisMethod.CompleteImage();
+
+  std::cout << "PairwisePotentialCallCount: " << KomodakisMethod.PairwisePotentialCallCount << std::endl;
+  std::cout << "SingleNodePotentialCallCount: " << KomodakisMethod.SingleNodePotentialCallCount << std::endl;
+
+  for(unsigned int i = 0; i < nodes.size(); i++)
+    {
+    std::cout << "Node " << i << " : " << nodes[i].Label << std::endl;
+    }
 
   return EXIT_SUCCESS;
 }
